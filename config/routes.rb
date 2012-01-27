@@ -1,4 +1,6 @@
 EnterpriseWiki::Application.routes.draw do
+  resources :variables
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
