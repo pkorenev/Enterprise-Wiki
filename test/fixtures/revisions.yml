@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  page_id: 1
+  title: MyString
+  body: MyText
+  markup_name: MyString
+  theme_id: 1
+  is_minor_edit: false
+  commit_message: MyText
+
+two:
+  page_id: 1
+  title: MyString
+  body: MyText
+  markup_name: MyString
+  theme_id: 1
+  is_minor_edit: false
+  commit_message: MyText

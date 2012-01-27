@@ -10,6 +10,8 @@ pages
         # type = 2  downloadable file (id/path connected with http://upload.acm-project.org)
   created_at
   updated_at
+  
+  `rails g model Page path:string owner_name:string group_id:integer permission:integer type:integer`
 
 revisions
   id
@@ -22,6 +24,8 @@ revisions
   commit_message
   created_at
   updated_at
+  
+  `rails g model Revision page_id:integer title:string body:text markup_name:string theme_id:integer is_minor_edit:boolean commit_message:text`
 
 hyperlinks
   id
@@ -29,12 +33,16 @@ hyperlinks
   url
   created_at
   updated_at
+  
+  `rails g model Hyperlink page_id:integer url:string`
 
 groups
   id
   name  # human-readable name
   created_at
   updated_at
+  
+  `rails g model Group name:string`
 
 memberships # since user model is not included in this app, we transform the relationship to a one-to-many one
   id
@@ -42,6 +50,8 @@ memberships # since user model is not included in this app, we transform the rel
   user_name # this field is connected with the federated identity system (http://login.acm-project.org)
   created_at
   updated_at
+  
+  `rails g model Membership group_id:integer user_name:string`
 
 themes  # themes are installed from filesystem
   id
@@ -49,6 +59,8 @@ themes  # themes are installed from filesystem
   path  # location in the filesystem, e.g. /var/lib/wiki-themes/default
   created_at
   updated_at
+  
+  `rails g model Theme name:string path:string`
 
 markups are built-in components (identified by using human-readable names)
 
