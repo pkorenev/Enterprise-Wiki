@@ -21,11 +21,13 @@ revisions
   markup_name # human-readable name such as 'Markdown', 'MediaWiki', etc.
   theme_id
   is_minor_edit
+  editor_name
   commit_message
   created_at
   updated_at
   
   `rails g model Revision page_id:integer title:string body:text markup_name:string theme_id:integer is_minor_edit:boolean commit_message:text`
+  `rails g migration AddEditorNameToRevisions editor_name:string`
 
 hyperlinks
   id
