@@ -1,9 +1,0 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-homepage_editor:
-  title: Homepage Editor
-  users: xjia
-
-homepage_uploader:
-  title: Homepage Uploader
-  users: test
