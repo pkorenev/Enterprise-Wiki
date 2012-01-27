@@ -36,9 +36,12 @@ groups
   created_at
   updated_at
 
-groups_users  # relationship
+memberships # since user model is not included in this app, we transform the relationship to a one-to-many one
+  id
   group_id
   user_name # this field is connected with the federated identity system (http://login.acm-project.org)
+  created_at
+  updated_at
 
 themes  # themes are installed from filesystem
   id
