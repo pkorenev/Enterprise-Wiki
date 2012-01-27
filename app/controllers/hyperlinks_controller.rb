@@ -1,0 +1,2 @@
+class HyperlinksController < ApplicationController
+end
