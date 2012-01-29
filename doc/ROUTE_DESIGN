@@ -14,7 +14,6 @@ when a page exists, edit_page will redirects here.
 #   new_page_revision GET    /pages/:page_id/revisions/new(.:format)          revisions#new
 
 used as permalink or just for viewing a specific revision.
-parameter ?compare=[:rev_id] will show a comparison between two revisions.
 #       page_revision GET    /pages/:page_id/revisions/:id(.:format)          revisions#show
 
 when a page exists, edit_page will redirects here.
