@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120129011914) do
+ActiveRecord::Schema.define(:version => 20120129020201) do
 
   create_table "groups", :force => true do |t|
     t.string   "name"
@@ -26,12 +26,16 @@ ActiveRecord::Schema.define(:version => 20120129011914) do
     t.datetime "updated_at",                 :null => false
   end
 
+  add_index "hyperlinks", ["page_id"], :name => "hyperlinks_page_id_fk"
+
   create_table "memberships", :force => true do |t|
     t.integer  "group_id"
     t.string   "user_name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "memberships", ["group_id"], :name => "memberships_group_id_fk"
 
   create_table "pages", :force => true do |t|
     t.string   "path",       :limit => 2000
@@ -42,6 +46,8 @@ ActiveRecord::Schema.define(:version => 20120129011914) do
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
   end
+
+  add_index "pages", ["group_id"], :name => "pages_group_id_fk"
 
   create_table "revisions", :force => true do |t|
     t.integer  "page_id"
@@ -56,6 +62,9 @@ ActiveRecord::Schema.define(:version => 20120129011914) do
     t.string   "editor_name"
   end
 
+  add_index "revisions", ["page_id"], :name => "revisions_page_id_fk"
+  add_index "revisions", ["theme_id"], :name => "revisions_theme_id_fk"
+
   create_table "themes", :force => true do |t|
     t.string   "name"
     t.string   "path",       :limit => 500
@@ -69,5 +78,14 @@ ActiveRecord::Schema.define(:version => 20120129011914) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_foreign_key "hyperlinks", "pages", :name => "hyperlinks_page_id_fk"
+
+  add_foreign_key "memberships", "groups", :name => "memberships_group_id_fk"
+
+  add_foreign_key "pages", "groups", :name => "pages_group_id_fk"
+
+  add_foreign_key "revisions", "pages", :name => "revisions_page_id_fk"
+  add_foreign_key "revisions", "themes", :name => "revisions_theme_id_fk"
 
 end
