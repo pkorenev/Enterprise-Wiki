@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120127090100) do
+ActiveRecord::Schema.define(:version => 20120129011914) do
 
   create_table "groups", :force => true do |t|
     t.string   "name"
@@ -21,9 +21,9 @@ ActiveRecord::Schema.define(:version => 20120127090100) do
 
   create_table "hyperlinks", :force => true do |t|
     t.integer  "page_id"
-    t.string   "url"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "url",        :limit => 2000
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "memberships", :force => true do |t|
@@ -34,13 +34,13 @@ ActiveRecord::Schema.define(:version => 20120127090100) do
   end
 
   create_table "pages", :force => true do |t|
-    t.string   "path"
+    t.string   "path",       :limit => 2000
     t.string   "owner_name"
     t.integer  "group_id"
     t.integer  "permission"
     t.integer  "type"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "revisions", :force => true do |t|
@@ -58,9 +58,9 @@ ActiveRecord::Schema.define(:version => 20120127090100) do
 
   create_table "themes", :force => true do |t|
     t.string   "name"
-    t.string   "path"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "path",       :limit => 500
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "variables", :force => true do |t|
