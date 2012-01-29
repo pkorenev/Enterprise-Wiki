@@ -6,29 +6,48 @@
                       PUT    /variables/:id(.:format)                         variables#update
                       DELETE /variables/:id(.:format)                         variables#destroy
 
-       page_revisions GET    /pages/:page_id/revisions(.:format)              revisions#index
-                      POST   /pages/:page_id/revisions(.:format)              revisions#create
-    new_page_revision GET    /pages/:page_id/revisions/new(.:format)          revisions#new
-        page_revision GET    /pages/:page_id/revisions/:id(.:format)          revisions#show
+this is the history view which lists all the revisions of a page.
+#      page_revisions GET    /pages/:page_id/revisions(.:format)              revisions#index
 
-  edit_page_hyperlink GET    /pages/:page_id/hyperlink/edit(.:format)         hyperlinks#edit
-                      GET    /pages/:page_id/hyperlink(.:format)              hyperlinks#show
-                      PUT    /pages/:page_id/hyperlink(.:format)              hyperlinks#update
+when a page exists, edit_page will redirects here.
+#                     POST   /pages/:page_id/revisions(.:format)              revisions#create
+#   new_page_revision GET    /pages/:page_id/revisions/new(.:format)          revisions#new
 
-                pages GET    /pages(.:format)                                 pages#index
-                      POST   /pages(.:format)                                 pages#create
-             new_page GET    /pages/new(.:format)                             pages#new
-            edit_page GET    /pages/:id/edit(.:format)                        pages#edit
-                 page GET    /pages/:id(.:format)                             pages#show
-                      PUT    /pages/:id(.:format)                             pages#update
-                      DELETE /pages/:id(.:format)                             pages#destroy
+used as permalink or just for viewing a specific revision.
+parameter ?compare=[:rev_id] will show a comparison between two revisions.
+#       page_revision GET    /pages/:page_id/revisions/:id(.:format)          revisions#show
 
-                      POST   /groups/:group_id/memberships(.:format)          memberships#create
-                      DELETE /groups/:group_id/memberships/:id(.:format)      memberships#destroy
+when a page exists, edit_page will redirects here.
+# edit_page_hyperlink GET    /pages/:page_id/hyperlink/edit(.:format)         hyperlinks#edit
+#                     PUT    /pages/:page_id/hyperlink(.:format)              hyperlinks#update
 
-               groups GET    /groups(.:format)                                groups#index
+this will redirect to the hyperlink (show page only displays the hyperlink).
+#                     GET    /pages/:page_id/hyperlink(.:format)              hyperlinks#show
+
+list all pages (may be used as a site map).
+#               pages GET    /pages(.:format)                                 pages#index
+
+show page
+; for normal page, display the last revision
+; for hyperlink, display the hyperlink and provide a link for it
+; for file, connect with upload.acm-project.org (user downloads the file there, not here)
+#                page GET    /pages/:id(.:format)                             pages#show
+
+create new page (need to select type; will create a revision or a hyperlink if selected).
+#                     POST   /pages(.:format)                                 pages#create
+#            new_page GET    /pages/new(.:format)                             pages#new
+
+edit owner/group/permission (root can edit path).
+#           edit_page GET    /pages/:id/edit(.:format)                        pages#edit
+#                     PUT    /pages/:id(.:format)                             pages#update
+
+these actions are referenced in the index page of groups.
+#                     POST   /groups/:group_id/memberships(.:format)          memberships#create
+#                     DELETE /groups/:group_id/memberships/:id(.:format)      memberships#destroy
+
 index page includes a grouped view of groups and a create-new-group form.
 members of groups are shown in this view directly, including create/destroy forms.
+#              groups GET    /groups(.:format)                                groups#index
                       POST   /groups(.:format)                                groups#create
            edit_group GET    /groups/:id/edit(.:format)                       groups#edit
                       PUT    /groups/:id(.:format)                            groups#update

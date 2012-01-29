@@ -8,7 +8,7 @@ EnterpriseWiki::Application.routes.draw do
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
 
-  resources :pages do
+  resources :pages, :except => :destroy do
     resources :revisions, :only => [:index, :create, :new, :show]
     resource :hyperlink, :only => [:edit, :show, :update]
   end
