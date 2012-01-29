@@ -9,12 +9,12 @@ EnterpriseWiki::Application.routes.draw do
   # This route can be invoked with purchase_url(:id => product.id)
 
   resources :pages do
-    resources :revisions
-    resource :hyperlink
+    resources :revisions, :only => [:index, :create, :new, :show]
+    resource :hyperlink, :only => [:edit, :show, :update]
   end
   
-  resources :groups do
-    resources :memberships
+  resources :groups, :only => [:index, :create, :edit, :update, :destroy] do
+    resources :memberships, :only => [:create, :destroy]
   end
   
   resources :themes

@@ -1,0 +1,45 @@
+            variables GET    /variables(.:format)                             variables#index
+                      POST   /variables(.:format)                             variables#create
+         new_variable GET    /variables/new(.:format)                         variables#new
+        edit_variable GET    /variables/:id/edit(.:format)                    variables#edit
+             variable GET    /variables/:id(.:format)                         variables#show
+                      PUT    /variables/:id(.:format)                         variables#update
+                      DELETE /variables/:id(.:format)                         variables#destroy
+
+       page_revisions GET    /pages/:page_id/revisions(.:format)              revisions#index
+                      POST   /pages/:page_id/revisions(.:format)              revisions#create
+    new_page_revision GET    /pages/:page_id/revisions/new(.:format)          revisions#new
+        page_revision GET    /pages/:page_id/revisions/:id(.:format)          revisions#show
+
+  edit_page_hyperlink GET    /pages/:page_id/hyperlink/edit(.:format)         hyperlinks#edit
+                      GET    /pages/:page_id/hyperlink(.:format)              hyperlinks#show
+                      PUT    /pages/:page_id/hyperlink(.:format)              hyperlinks#update
+
+                pages GET    /pages(.:format)                                 pages#index
+                      POST   /pages(.:format)                                 pages#create
+             new_page GET    /pages/new(.:format)                             pages#new
+            edit_page GET    /pages/:id/edit(.:format)                        pages#edit
+                 page GET    /pages/:id(.:format)                             pages#show
+                      PUT    /pages/:id(.:format)                             pages#update
+                      DELETE /pages/:id(.:format)                             pages#destroy
+
+                      POST   /groups/:group_id/memberships(.:format)          memberships#create
+                      DELETE /groups/:group_id/memberships/:id(.:format)      memberships#destroy
+
+               groups GET    /groups(.:format)                                groups#index
+index page includes a grouped view of groups and a create-new-group form.
+members of groups are shown in this view directly, including create/destroy forms.
+                      POST   /groups(.:format)                                groups#create
+           edit_group GET    /groups/:id/edit(.:format)                       groups#edit
+                      PUT    /groups/:id(.:format)                            groups#update
+                      DELETE /groups/:id(.:format)                            groups#destroy
+
+               themes GET    /themes(.:format)                                themes#index
+                      POST   /themes(.:format)                                themes#create
+            new_theme GET    /themes/new(.:format)                            themes#new
+           edit_theme GET    /themes/:id/edit(.:format)                       themes#edit
+                theme GET    /themes/:id(.:format)                            themes#show
+                      PUT    /themes/:id(.:format)                            themes#update
+                      DELETE /themes/:id(.:format)                            themes#destroy
+
+                 root        /                                                site#home
