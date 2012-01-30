@@ -1,7 +1,7 @@
 class Page < ActiveRecord::Base
   belongs_to :group
   has_many :revisions, :dependent => :delete_all
-  has_one :hyperlink, :dependent => :delete_all
+  has_one :hyperlink, :dependent => :delete
   
   validates :path, :length => { :in => 0..2000 }, :uniqueness => { :case_sensitive => false }
   validates :owner_name, :length => { :in => 1..250 }
