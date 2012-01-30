@@ -1,5 +1,5 @@
 class Theme < ActiveRecord::Base
-  has_many :revisions
+  has_many :revisions, :dependent => :restrict
   
   validates :name, :length => { :in => 1..250 }, :uniqueness => true
   validates :path, :length => { :in => 1..500 }
